@@ -36,9 +36,8 @@ app.post('/contact', (req, res) => {
     const mailOptions = {
         from: email,
         to: process.env.EMAIL_USER, // Use env variable from create.env
-        subject: `New message from ${name}`,
-        text: message,
-        text: `New message from ${email}`
+        subject: `New message from ${email}:\n\n${message}`,
+        text: message
     };
 
     // Send email
@@ -46,7 +45,7 @@ app.post('/contact', (req, res) => {
         if (error) {
             return res.status(500).json({ message: 'Error sending email' });
         }
-        res.status(200).json({ message: 'Message sent successfully' });
+        res.status(200).json({ message: 'Message sent successfully\nI will contact you soon' });
     });
 });
 
