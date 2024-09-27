@@ -37,7 +37,8 @@ app.post('/contact', (req, res) => {
         from: email,
         to: process.env.EMAIL_USER, // Use env variable from create.env
         subject: `New message from ${name}`,
-        text: message
+        text: message,
+        text: `New message from ${email}`
     };
 
     // Send email
