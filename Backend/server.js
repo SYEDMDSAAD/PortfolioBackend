@@ -34,9 +34,10 @@ app.post('/contact', (req, res) => {
 
     // Email options
     const mailOptions = {
-        from: email,
-        to: process.env.EMAIL_USER, // Use env variable from create.env
-        subject: `New message from ${email}:\n\n${message}`,
+        from: process.env.EMAIL_USER, // Your email address
+        to: process.env.EMAIL_USER,   // Your email address to receive the email
+        replyTo: email, // The user's email address where replies should go
+        subject: `New message from ${name}`,
         text: message
     };
 
