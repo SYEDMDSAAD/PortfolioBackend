@@ -2,12 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const cors = require('cors');
 require('dotenv').config({ path: './create.env' }); // Load the custom create.env file
 
 const app = express();
 const port = process.env.PORT || 5000; // Use environment variable for port or default to 5000
 
 // Middleware
+app.use(cors({
+    origin: 'https://syedmdsaad.github.io' // Allow only your frontend domain
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
